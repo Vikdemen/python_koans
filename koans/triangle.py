@@ -17,7 +17,15 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
+    # All sides should be greater than 0
+    # The sum of any two sides should be greater than the third one
+    for side in (a, b, c):
+        if side <= 0:
+            raise TriangleError("Side is zero or less")
+        others = sum((a, b, c)) - side
+        if side > others:
+            raise TriangleError("Side is larger than than other two")
+
     n_different = len({a, b, c})
     match n_different:
         case 1:
