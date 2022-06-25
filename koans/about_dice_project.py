@@ -14,9 +14,7 @@ class DiceSet:
         return self._values
 
     def roll(self, n):
-        # Needs implementing!
-        # Tip: random.randint(min, max) can be used to generate random numbers
-        pass
+        self._values = [random.randint(1, 6) for _ in range(n)]
 
 class AboutDiceProject(Koan):
     def test_can_create_a_dice_set(self):
@@ -42,9 +40,11 @@ class AboutDiceProject(Koan):
     def test_dice_values_should_change_between_rolls(self):
         dice = DiceSet()
 
+        random.seed(321)
         dice.roll(5)
         first_time = dice.values
 
+        random.seed(123)
         dice.roll(5)
         second_time = dice.values
 
